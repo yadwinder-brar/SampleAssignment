@@ -2,3 +2,30 @@
     <mat-icon (click)="dialogRef.close()">close</mat-icon>
 </div>
 
+<div class=""> Add Pin
+</div>
+
+    <form [formGroup]="pinsForm"> 
+        <mat-form-field class="example-form-field">
+            <mat-label>Title</mat-label>
+            <input matInput type="text" formControlName="title" placeholder="Title">
+            <mat-error *ngIf="pinsForm?.get('title')?.errors?.required && pinsForm?.get('title')?.touched"> Please enter title</mat-error>
+        </mat-form-field>
+        <mat-form-field class="example-form-field">
+            <mat-label>Title</mat-label>
+            <input matInput type="text" formControlName="title" placeholder="Title">
+            <mat-error *ngIf="pinsForm?.get('title')?.errors?.required && pinsForm?.get('title')?.touched"> Please enter title</mat-error>
+        </mat-form-field>
+        <mat-form-field class="example-form-field">
+            <mat-label>Title</mat-label>
+            <input matInput type="text" formControlName="title" placeholder="Title">
+            <mat-error *ngIf="pinsForm?.get('title')?.errors?.required && pinsForm?.get('title')?.touched"> Please enter title</mat-error>
+        </mat-form-field>
+        <mat-form-field class="example-form-field">
+            <mat-label>Title</mat-label>
+            <input matInput type="text" formControlName="title" placeholder="Title">
+            <mat-error *ngIf="pinsForm?.get('title')?.errors?.required && pinsForm?.get('title')?.touched"> Please enter title</mat-error>
+        </mat-form-field>
+
+        <button type="button" (click)="addPin()">Add Pin</button>
+    </form>
