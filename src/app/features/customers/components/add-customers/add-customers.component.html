@@ -1,1 +1,52 @@
-<p>add-customers works!</p>
+<div class="d-flex justify-content-end">
+    <mat-icon (click)="dialogRef.close()">close</mat-icon>
+</div>
+
+<div class=""> Add Customer
+</div>
+
+    <form [formGroup]="addCustomerForm"> 
+        <div class="my-1">
+        <mat-form-field class="w-100">
+            <mat-label>Title</mat-label>
+            <input matInput type="text" formControlName="title" placeholder="Title">
+            <mat-error *ngIf="addCustomerForm?.get('title')?.errors?.required && addCustomerForm?.get('title')?.touched"> Please enter title</mat-error>
+        </mat-form-field>
+        
+    </div>
+        <div class="my-1">
+        <mat-form-field class="w-100">
+            <mat-label>Email</mat-label>
+            <input matInput type="text" formControlName="email" placeholder="Title">
+            <mat-error *ngIf="addCustomerForm?.get('email')?.errors?.required && addCustomerForm?.get('email')?.touched"> Please enter email</mat-error>
+            <mat-error *ngIf="addCustomerForm?.get('email')?.errors?.email && addCustomerForm?.get('email')?.touched"> Please enter valid email</mat-error>
+        </mat-form-field>
+    </div>
+        <div class="my-3">
+            <mat-label>Select Region</mat-label>
+          <ngx-select  
+              formControlName="region"
+              [allowClear]="false" 
+              [items]="regionList" 
+              optionValueField="region"
+              (selectionChanges)="selectRegion($event)"
+              optionTextField="region" 
+              placeholder="Select Region">
+            </ngx-select>
+            <mat-error *ngIf="addCustomerForm?.get('region')?.errors?.required && addCustomerForm?.get('region')?.touched"> Please select region </mat-error>
+        </div>
+            <div class="my-3">
+                <mat-label>Select Country</mat-label>
+                <ngx-select  
+                formControlName="country"
+                [allowClear]="false" 
+                [items]="counrtyDropDownList" 
+                [disabled]="!addCustomerForm.get('region')?.value"
+                optionValueField="country"
+                optionTextField="country" 
+                placeholder="Select country">
+            </ngx-select>
+            <mat-error *ngIf="addCustomerForm?.get('country')?.errors?.required && addCustomerForm?.get('country')?.touched"> Please select country </mat-error>
+        </div>
+        <button type="button" class="btn btn-primary mt-3" (click)="addCustomers()">Add Customer</button>
+    </form>

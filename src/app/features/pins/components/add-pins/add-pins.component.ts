@@ -4,18 +4,22 @@ import { MatDialogRef} from '@angular/material/dialog';
 import { Pins } from '../../models';
 import { LocalStorageService } from 'src/app/core/services/localstorage.service';
 import { LocalStorageKeys } from 'src/app/core/config';
+import { Customers } from 'src/app/features/customers/models';
+
 @Component({
   selector: 'app-add-pins',
   templateUrl: './add-pins.component.html',
-  styleUrls: ['./add-pins.component.css']
+  styleUrls: ['./add-pins.component.css'],
 })
 export class AddPinsComponent implements OnInit {
- pinsForm!:FormGroup
+  pinsForm!: FormGroup
+  uploadedImg: string = '';
+  customers:Customers[]= []
   constructor(public dialogRef: MatDialogRef<AddPinsComponent>,
     private _formBuilder: FormBuilder,
-  private _localStoRageServices:LocalStorageService
+    private _localStoRageServices: LocalStorageService,
   
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.createForm();
@@ -30,6 +34,10 @@ export class AddPinsComponent implements OnInit {
   })
 }
 
+  imgUpload(event:any) {
+  
+}
+  
   addPin() {
     if (!this.pinsForm.valid) {
       this.pinsForm.markAllAsTouched();

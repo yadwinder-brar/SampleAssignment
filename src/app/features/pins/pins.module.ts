@@ -7,6 +7,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { ReactiveFormsModule } from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import {MatIconModule} from '@angular/material/icon'
+import { FileUploaderModule } from '../../shared/file-uploader/file-uploader.module';
+import { NgxSelectModule } from 'ngx-select-ex';
 @NgModule({
   declarations: [
     AddPinsComponent,
@@ -19,6 +21,8 @@ import {MatIconModule} from '@angular/material/icon'
     ReactiveFormsModule,
     MatIconModule,
     MatInputModule,
-  ]
+    FileUploaderModule,
+    NgxSelectModule
+  ],
 })
 export class PinsModule { }

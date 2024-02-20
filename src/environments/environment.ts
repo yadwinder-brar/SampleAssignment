@@ -7,7 +7,7 @@ export const environment = {
   env: 'dev',
   apiUrls: {
     api: '',
-    baseApiUrl: '',
+    baseApiUrl: 'https://api.first.org/data/v1/',
   },
   
 };

@@ -3,6 +3,7 @@ import { Pins } from '../../models/index';
 import { LocalStorageService } from 'src/app/core/services/localstorage.service';
 import { MatDialog } from '@angular/material/dialog';
 import { AddPinsComponent } from '../add-pins/add-pins.component';
+import { AddCustomersComponent } from 'src/app/features/customers/components/add-customers/add-customers.component';
 
 @Component({
   selector: 'app-pins-list',
@@ -23,6 +24,14 @@ export class PinsListComponent implements OnInit {
   this.dialog.open(AddPinsComponent,{
     maxWidth: '50px',
     minWidth: '390px',
+    disableClose: true
+  })
+  .afterClosed().subscribe(res=>{ })
+}
+  addCustomers() {
+  this.dialog.open(AddCustomersComponent,{
+    maxWidth: '550px',
+    minWidth: '400px',
     disableClose: true
   })
   .afterClosed().subscribe(res=>{ })

@@ -16,16 +16,30 @@
             <input matInput type="text" formControlName="title" placeholder="Title">
             <mat-error *ngIf="pinsForm?.get('title')?.errors?.required && pinsForm?.get('title')?.touched"> Please enter title</mat-error>
         </mat-form-field>
-        <mat-form-field class="example-form-field">
-            <mat-label>Title</mat-label>
-            <input matInput type="text" formControlName="title" placeholder="Title">
-            <mat-error *ngIf="pinsForm?.get('title')?.errors?.required && pinsForm?.get('title')?.touched"> Please enter title</mat-error>
-        </mat-form-field>
-        <mat-form-field class="example-form-field">
-            <mat-label>Title</mat-label>
-            <input matInput type="text" formControlName="title" placeholder="Title">
-            <mat-error *ngIf="pinsForm?.get('title')?.errors?.required && pinsForm?.get('title')?.touched"> Please enter title</mat-error>
-        </mat-form-field>
+        <div class="row justify-between plus-icon">
+            <div class="col-lg-5 pl-2">
+              <div class="text-center font-14 mt-3 mb-2 l-black">image</div>
+              <file-uploader #fileUploader="FileUploader"></file-uploader>
+              <app-uploader-ui
+                #selectFile2
+                [fileUploader]="fileUploader"
+                (afterUploadFile)="imgUpload($event)"
+              ></app-uploader-ui>
+              <div
+                class="upload-proof"
+                *ngIf="!uploadedImg"
+                (click)="selectFile2.selectFile()"
+              >
+                <img src="../../../../assets/images/plus-icon.svg" alt="" />
+              </div>
+              <div class="upload-proof" *ngIf="uploadedImg">
+                <mat-icon class="first_icon" (click)="uploadedImg = ''">close</mat-icon>
+                <!-- <img src="" (click)="removeImage()" /> -->
+                <img [src]="uploadedImg" alt="" />
+              </div>
+            </div>
+          </div>
+          <ngx-select [items]="customers" formControlName="collaboratory"></ngx-select>
 
-        <button type="button" (click)="addPin()">Add Pin</button>
+        <button type="button" class="btn btn-primary" (click)="addPin()">Add Pin</button>
     </form>

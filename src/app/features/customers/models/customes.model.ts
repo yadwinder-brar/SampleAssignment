@@ -1,6 +1,4 @@
-export interface Customers{
-  title: string,
-  email: string,
-  region: string,
+export interface Country{
   country: string,
+  region: string,
 }
