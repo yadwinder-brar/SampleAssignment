@@ -1,0 +1,35 @@
+<div class="container">
+
+    <div class=" my-1 d-flex justify-content-end">
+        <button class="btn btn-primary w-auto"> + Add Customers</button>
+    </div>
+    <div class="my-1 d-flex justify-content-end"><button
+            class="btn btn-primary" (click)="addPins()"> + Add PINS</button>
+    </div>
+<span>List of Pins</span>
+    <div class="d-flex justify-content-center">
+        <table class="table table-bordered" *ngIf="pinsList && !pinsList.length">
+            <thead>
+              <tr>
+                <th scope="col">Title</th>
+                <th scope="col">Image</th>
+                <th scope="col">Collaboratory</th>
+                <th scope="col">Privacy</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor=" let pin of pinsList">
+                <td>{{pin?.title}}</td>
+                <td>{{pin?.image}}</td>
+                <td ><span class="d-block text-center" *ngFor="let collaboratory of pin?.collaboratory">{{collaboratory}}</span></td>
+                <td>{{pin?.privacy}}</td>
+              </tr>
+            </tbody>
+          </table>
+        <div class="d-flex justify-content-center align-items-end noData"
+            *ngIf="pinsList && pinsList.length">
+            no pin found
+        </div>
+
+    </div>
+</div>

@@ -1,12 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AppComponent } from './app.component';
-
-
 
 const routes: Routes = [
-  
-
+  {
+    path: '',
+    loadChildren: () =>
+      import('./features/pins/pins.module').then((m) => m.PinsModule)
+  },
+ {
+    path: 'customers',
+    loadChildren: () =>
+      import('./features/customers/customers.module').then((m) => m.CustomersModule)},
 ];
 
 
