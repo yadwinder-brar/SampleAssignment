@@ -142,7 +142,7 @@ export class AddCustomersComponent implements OnInit {
     country:['',Validators.required],
   })
   }
-  
+  // api for get region and customer but not worked so i use to static data from variable
   getRegionList() {
     this._customerServices.getRegionList().pipe(
       catchError((error) => {

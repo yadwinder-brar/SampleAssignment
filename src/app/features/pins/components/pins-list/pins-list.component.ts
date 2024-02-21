@@ -22,7 +22,7 @@ export class PinsListComponent implements OnInit {
 
   addPins() {
   this.dialog.open(AddPinsComponent,{
-    minWidth: '500px',
+    minWidth: '350px',
     disableClose: true
   })
     .afterClosed().subscribe(res => {
@@ -34,7 +34,7 @@ export class PinsListComponent implements OnInit {
   addCustomers() {
   this.dialog.open(AddCustomersComponent,{
     maxWidth: '550px',
-    minWidth: '400px',
+    minWidth: '350px',
     disableClose: true
   })
   .afterClosed().subscribe(res=>{ })

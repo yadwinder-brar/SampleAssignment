@@ -7,8 +7,9 @@
             class="btn btn-primary" (click)="addPins()"> + Add PINS</button>
     </div>
 <span class="headerFont">List of Pins</span>
+<!-- can use a shared table by just pass header and body data by creating commaon table and call table-component and pass data  -->
     <div class="d-flex justify-content-center">
-        <table class="table table-bordered" *ngIf="pinsList && pinsList.length">
+        <table class="table table-bordered table-responsive-md text-capitalize" *ngIf="pinsList && pinsList.length">
             <thead>
               <tr>
                 <th scope="col">Title</th>
