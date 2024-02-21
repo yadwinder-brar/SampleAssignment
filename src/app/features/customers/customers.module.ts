@@ -6,6 +6,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { NgxSelectModule } from 'ngx-select-ex';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 
 
@@ -20,6 +21,7 @@ import { NgxSelectModule } from 'ngx-select-ex';
     ReactiveFormsModule,
     MatIconModule,
     MatInputModule,
+    MatSnackBarModule,
     NgxSelectModule
   ]
 })

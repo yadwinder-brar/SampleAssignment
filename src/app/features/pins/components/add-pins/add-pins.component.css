@@ -1,0 +1,17 @@
+.dropFileArea{
+display: flex;
+align-items: center;
+justify-content: center;
+width: 100%;
+height: 40px;
+border: 1px solid #000000;
+}
+
+
+.radio_group{
+    margin-left: 12px;
+}
+
+.radioLabel{
+    font-size: 18px;
+}

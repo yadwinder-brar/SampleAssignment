@@ -6,9 +6,9 @@
     <div class="my-1 d-flex justify-content-end"><button
             class="btn btn-primary" (click)="addPins()"> + Add PINS</button>
     </div>
-<span>List of Pins</span>
+<span class="headerFont">List of Pins</span>
     <div class="d-flex justify-content-center">
-        <table class="table table-bordered" *ngIf="pinsList && !pinsList.length">
+        <table class="table table-bordered" *ngIf="pinsList && pinsList.length">
             <thead>
               <tr>
                 <th scope="col">Title</th>
@@ -27,7 +27,7 @@
             </tbody>
           </table>
         <div class="d-flex justify-content-center align-items-end noData"
-            *ngIf="pinsList && pinsList.length">
+            *ngIf="pinsList && !pinsList.length">
             no pin found
         </div>
 

@@ -1,45 +1,60 @@
-<div class="d-flex justify-content-end">
-    <mat-icon (click)="dialogRef.close()">close</mat-icon>
+<div class="d-flex justify-content-between">
+  <span class="font-weight-bold">Add Pin</span>
+  <mat-icon (click)="dialogRef.close()">close</mat-icon>
 </div>
 
-<div class=""> Add Pin
-</div>
+<form [formGroup]="pinsForm">
+  <mat-form-field class="w-100">
+    <mat-label>Title</mat-label>
+    <input matInput type="text" formControlName="title" placeholder="Title">
+    <mat-error
+      *ngIf="pinsForm?.get('title')?.errors?.required && pinsForm?.get('title')?.touched">
+      Please enter title</mat-error>
+  </mat-form-field>
+  <div class="my-2">
+    <mat-label class="mr-3">Image</mat-label>
+    <div ng2FileDrop
+      (onFileDrop)="onFileSelected($event)"
+      class="dropFileArea"
+      (click)="selectFile.click()">
+      Choose & Drag and Drop file here
+    </div>
+    <span>{{this.pinsForm.get('image')?.value}}</span>
+    <input ng2FileSelect hidden (onFileSelected)="onFileSelected($event)"
+      type="file" #selectFile>
+  </div>
+  <mat-error
+    *ngIf="pinsForm?.get('image')?.errors?.required && pinsForm?.get('image')?.touched">Please
+    upload image</mat-error>
+  <div class="my-3">
+    <mat-label>Select Collaboratory</mat-label>
+    <ngx-select
+      formControlName="collaboratory"
+      [allowClear]="false"
+      [items]="customers"
+      [multiple]="true"
+      optionValueField="title"
+      optionTextField="title"
+      placeholder="Select Collaboratory">
+    </ngx-select>
+    <mat-error
+      *ngIf="pinsForm?.get('collaboratory')?.errors?.required && pinsForm?.get('collaboratory')?.touched">
+      Please select collaboratory </mat-error>
+  </div>
 
-    <form [formGroup]="pinsForm"> 
-        <mat-form-field class="example-form-field">
-            <mat-label>Title</mat-label>
-            <input matInput type="text" formControlName="title" placeholder="Title">
-            <mat-error *ngIf="pinsForm?.get('title')?.errors?.required && pinsForm?.get('title')?.touched"> Please enter title</mat-error>
-        </mat-form-field>
-        <mat-form-field class="example-form-field">
-            <mat-label>Title</mat-label>
-            <input matInput type="text" formControlName="title" placeholder="Title">
-            <mat-error *ngIf="pinsForm?.get('title')?.errors?.required && pinsForm?.get('title')?.touched"> Please enter title</mat-error>
-        </mat-form-field>
-        <div class="row justify-between plus-icon">
-            <div class="col-lg-5 pl-2">
-              <div class="text-center font-14 mt-3 mb-2 l-black">image</div>
-              <file-uploader #fileUploader="FileUploader"></file-uploader>
-              <app-uploader-ui
-                #selectFile2
-                [fileUploader]="fileUploader"
-                (afterUploadFile)="imgUpload($event)"
-              ></app-uploader-ui>
-              <div
-                class="upload-proof"
-                *ngIf="!uploadedImg"
-                (click)="selectFile2.selectFile()"
-              >
-                <img src="../../../../assets/images/plus-icon.svg" alt="" />
-              </div>
-              <div class="upload-proof" *ngIf="uploadedImg">
-                <mat-icon class="first_icon" (click)="uploadedImg = ''">close</mat-icon>
-                <!-- <img src="" (click)="removeImage()" /> -->
-                <img [src]="uploadedImg" alt="" />
-              </div>
-            </div>
-          </div>
-          <ngx-select [items]="customers" formControlName="collaboratory"></ngx-select>
+  <div class="my-3">
+    <label class="radioLabel" >Privacy *</label>
+    <mat-radio-group aria-label="Privacy" formControlName="privacy" class="radio_group">
+    <mat-radio-button value="private" class="mx-1" color="primary">Private</mat-radio-button>
+      <mat-radio-button value="public" color="primary">Public</mat-radio-button>
+      <mat-error
+      *ngIf="pinsForm?.get('privacy')?.errors?.required && pinsForm?.get('privacy')?.touched">Please
+      select privacy</mat-error>
+    </mat-radio-group>
+  </div>
 
-        <button type="button" class="btn btn-primary" (click)="addPin()">Add Pin</button>
-    </form>
+  <div class="d-flex justify-content-center my-2">
+    <button type="button" class="btn btn-primary" (click)="addPin()">Create
+      Pin</button>
+  </div>
+</form>

@@ -7,8 +7,10 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { ReactiveFormsModule } from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import {MatIconModule} from '@angular/material/icon'
-import { FileUploaderModule } from '../../shared/file-uploader/file-uploader.module';
 import { NgxSelectModule } from 'ngx-select-ex';
+import { FileUploadModule } from 'ng2-file-upload';
+import { MatRadioModule } from '@angular/material/radio';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 @NgModule({
   declarations: [
     AddPinsComponent,
@@ -21,8 +23,10 @@ import { NgxSelectModule } from 'ngx-select-ex';
     ReactiveFormsModule,
     MatIconModule,
     MatInputModule,
-    FileUploaderModule,
-    NgxSelectModule
+    FileUploadModule,
+    NgxSelectModule,
+    MatSnackBarModule,
+    MatRadioModule
   ],
 })
 export class PinsModule { }

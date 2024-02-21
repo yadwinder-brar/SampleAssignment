@@ -8,6 +8,7 @@ import { EMPTY, take } from 'rxjs';
 import { Country } from '../../models/customes.model';
 import { LocalStorageKeys } from 'src/app/core/config';
 import { Customers } from '../../models';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-add-customers',
@@ -122,6 +123,7 @@ export class AddCustomersComponent implements OnInit {
     private _formBuilder: FormBuilder,
     private _localStoRageServices: LocalStorageService,
     private _customerServices: CustomerServicesService,
+    private _snackBar: MatSnackBar
   ) { }
 
   ngOnInit(): void {
@@ -144,30 +146,27 @@ export class AddCustomersComponent implements OnInit {
   getRegionList() {
     this._customerServices.getRegionList().pipe(
       catchError((error) => {
-        alert(error?.message);
-        // we can use toaster insted of alert
+        this._snackBar.open(error?.message, 'close');
+      
         return EMPTY;
       }), take(1)).subscribe(res => {
         if (res?.status == 'ok') {
         this.regionList = res.data
       }else {
-        alert(res?.status)
-        // we can use status code for better approch and use intercepter for better error handling
+          this._snackBar.open(res?.status, 'close');
     }
     })
   }
   getCountryList() {
     this._customerServices.getCountryList().pipe(
       catchError((error) => {
-        alert(error?.message);
-        // we can use toaster insted of alert
+        this._snackBar.open(error?.message, 'close');
         return EMPTY;
       }), take(1)).subscribe(res => {
         if (res?.status == 'ok') {
         this.counrtyList = res.data
         } else {
-          alert(res?.status)
-          // we can use status code for better approch and use intercepter for better error handling
+          this._snackBar.open(res?.status, 'close')
       }
     })
   }
@@ -193,8 +192,8 @@ export class AddCustomersComponent implements OnInit {
     customers.push(data);
 
     this._localStoRageServices.setLocalStoageItems(LocalStorageKeys.CUSTOMERS, customers);
+    this._snackBar.open('Customer added succesfully', 'close')
     this.dialogRef.close();
-    // add success message or toaster 
 }
 
 

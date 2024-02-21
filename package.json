@@ -24,7 +24,6 @@
     "@angular/router": "^14.2.0",
     "bootstrap": "^4.6.2",
     "ng2-file-upload": "^3.0.0",
-    "ngx-image-cropper": "^6.3.2",
     "ngx-select-ex": "^8.0.1",
     "popper.js": "^1.16.1",
     "rxjs": "~7.5.0",

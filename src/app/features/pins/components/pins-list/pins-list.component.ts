@@ -22,11 +22,14 @@ export class PinsListComponent implements OnInit {
 
   addPins() {
   this.dialog.open(AddPinsComponent,{
-    maxWidth: '50px',
-    minWidth: '390px',
+    minWidth: '500px',
     disableClose: true
   })
-  .afterClosed().subscribe(res=>{ })
+    .afterClosed().subscribe(res => {
+      if (res) {
+        this.pinsList = this.localStorageService.pins
+    }
+   })
 }
   addCustomers() {
   this.dialog.open(AddCustomersComponent,{
