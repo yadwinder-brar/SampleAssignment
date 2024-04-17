@@ -87,12 +87,12 @@
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
             "assets": [
-              "favicon.ico",
+              "src/favicon.ico",
               "src/assets"
             ],
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
-              "src/styles.css"
+              "src/styles.scss"
             ],
             "scripts": []
           }
@@ -104,3 +104,4 @@
     "analytics": "de612be8-0c26-4f19-a0a6-7c2d451e4b20"
   }
 }
+
